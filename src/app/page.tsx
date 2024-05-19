@@ -35,12 +35,12 @@ export default function Home() {
           <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
             <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
               <div className="absolute w-28 left-0 -top-20 hidden lg:block">
-                <img src=".png" className="w-full bg-red-200" />
+                <img src=".png" className="w-full bg-red-500" />
               </div>
 
               <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                 Your Image on a{" "}
-                <span className="bg-green-600 px-2 text-white">Custom</span>{" "}
+                <span className="bg-yellow-400 px-2 text-white">Custom</span>{" "}
                 Phone Case
               </h1>
 
@@ -54,15 +54,15 @@ export default function Home() {
               <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
                 <div className="space-y-2">
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-600" />
+                    <Check className="h-5 w-5 shrink-0 text-yellow-400" />
                     High-quality, durable material
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-600" />5 year
+                    <Check className="h-5 w-5 shrink-0 text-yellow-400" />5 year
                     print guarantee
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-green-600" />
+                    <Check className="h-5 w-5 shrink-0 text-yellow-400" />
                     Modern iPhone models supported
                   </li>
                 </div>
@@ -82,11 +82,11 @@ export default function Home() {
 
                 <div className="flex flex-col justify-between items-center sm:items-start">
                   <div className="flex gap-0.5">
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                    <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
                   </div>
 
                   <p>
