@@ -1,30 +1,32 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Avatar from "@/components/Avatar";
+import { Icons } from "@/components/icons/Icons";
+import MaxWidthWrapper from "@/components/wrapper/MaxWidthWrapper";
 import Phone from "@/components/Phone";
+import Stars from "@/components/icons/Stars";
 import { formatNumber } from "@/utils/format/formatNumber";
-import { Check, Star } from "lucide-react";
 
 export default function Home() {
   const customerNum = 2000;
   const users = [
     {
       name: "Customer1",
-      avatarUrl: "https://",
+      avatarUrl: "",
     },
     {
-      name: "Customer1",
-      avatarUrl: "https://",
+      name: "Customer2",
+      avatarUrl: "",
     },
     {
-      name: "Customer1",
-      avatarUrl: "https://",
+      name: "Customer3",
+      avatarUrl: "",
     },
     {
-      name: "Customer1",
-      avatarUrl: "https://",
+      name: "Customer4",
+      avatarUrl: "",
     },
     {
-      name: "Customer1",
-      avatarUrl: "https://",
+      name: "Customer5",
+      avatarUrl: "",
     },
   ];
 
@@ -35,7 +37,7 @@ export default function Home() {
           <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
             <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
               <div className="absolute w-28 left-0 -top-20 hidden lg:block">
-                <img src=".png" className="w-full bg-red-500" />
+                <img src="image-1.png" className="w-full bg-red-500" />
               </div>
 
               <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
@@ -54,15 +56,14 @@ export default function Home() {
               <ul className="mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start">
                 <div className="space-y-2">
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-yellow-400" />
+                    <Icons.check />
                     High-quality, durable material
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-yellow-400" />5 year
-                    print guarantee
+                    <Icons.check />5 year print guarantee
                   </li>
                   <li className="flex gap-1.5 items-center text-left">
-                    <Check className="h-5 w-5 shrink-0 text-yellow-400" />
+                    <Icons.check />
                     Modern iPhone models supported
                   </li>
                 </div>
@@ -71,22 +72,13 @@ export default function Home() {
               <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                 <div className="flex -space-x-4">
                   {users.map((user, idx) => (
-                    <img
-                      className="inline-block h-10 w-10 rounded-full ring-2 ring-slate-100 bg-red-500"
-                      src={user.avatarUrl}
-                      alt="user image"
-                      key={"user" + idx}
-                    />
+                    <Avatar user={user} key={"user" + idx} />
                   ))}
                 </div>
 
                 <div className="flex flex-col justify-between items-center sm:items-start">
                   <div className="flex gap-0.5">
-                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-                    <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                    <Icons.stars count={5} />
                   </div>
 
                   <p>
@@ -106,6 +98,86 @@ export default function Home() {
             </div>
           </div>
         </MaxWidthWrapper>
+      </section>
+
+      {/* 📌 value proposition section */}
+      <section className="bg-slate-100 grainy-dark py-24">
+        <MaxWidthWrapper className="flex flex-col items-center gap-16 sm:gap-32">
+          <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
+            <h2 className="order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-gray-900">
+              What our{" "}
+              <span className="relative px-2">
+                customers{" "}
+                <Icons.underline className="hidden sm:block pointer-events-none absolute inset-x-0 -bottom-6 text-yellow-400" />
+              </span>{" "}
+              say
+            </h2>
+            <img
+              src="image-2.png"
+              className="w-24 order-0 lg:order-2 bg-red-500"
+            />
+          </div>
+
+          <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
+            <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+              <div className="flex gap-0.5 mb-2">
+                <Icons.stars count={5} className="w-5 h-5" />
+              </div>
+              <div className="text-lg leading-8">
+                <p>
+                  "The case feels durable and I even got a compliment on the
+                  design. Had the case for two and a half months now and{" "}
+                  <span className="p-0.5 bg-slate-800 text-white">
+                    the image is super clear
+                  </span>
+                  , on the case I had before, the image started fading into
+                  yellow-ish color after a couple weeks. Love it."
+                </p>
+              </div>
+              <div className="flex gap-4 mt-2">
+                <Avatar user={{ avatarUrl: undefined }} className="w-12 h-12" />
+                <div className="flex flex-col">
+                  <p className="font-semibold">Jonathan</p>
+                  <div className="flex gap-1.5 items-center text-zinc-600">
+                    <Icons.check />
+                    <p className="text-sm">Verified Purchase</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* second user review */}
+            <div className="flex flex-auto flex-col gap-4 lg:pr-8 xl:pr-20">
+              <div className="flex gap-0.5 mb-2">
+                <Icons.stars count={5} className="w-5 h-5" />
+              </div>
+              <div className="text-lg leading-8">
+                <p>
+                  "I usually keep my phone together with my keys in my pocket
+                  and that led to some pretty heavy scratchmarks on all of my
+                  last phone cases. This one, besides a barely noticeable
+                  scratch on the corner,{" "}
+                  <span className="p-0.5 bg-slate-800 text-white">
+                    looks brand new after about half a year
+                  </span>
+                  . I dig it."
+                </p>
+              </div>
+              <div className="flex gap-4 mt-2">
+                <Avatar user={{ avatarUrl: undefined }} className="w-12 h-12" />
+                <div className="flex flex-col">
+                  <p className="font-semibold">Josh</p>
+                  <div className="flex gap-1.5 items-center text-zinc-600">
+                    <Icons.check />
+                    <p className="text-sm">Verified Purchase</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </MaxWidthWrapper>
+
+        <div className="pt-16">{/* <Reviews /> */}</div>
       </section>
     </div>
   );
