@@ -4,6 +4,7 @@ import MaxWidthWrapper from "@/components/wrapper/MaxWidthWrapper";
 import Phone from "@/components/Phone";
 import Stars from "@/components/icons/Stars";
 import { formatNumber } from "@/utils/format/formatNumber";
+import Reviews from "@/components/Reviews/Reviews";
 
 export default function Home() {
   const customerNum = 2000;
@@ -32,6 +33,7 @@ export default function Home() {
 
   return (
     <div className="bg-slate-50">
+      {/* 📌 hero section */}
       <section>
         <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
           <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
@@ -94,7 +96,11 @@ export default function Home() {
 
           <div className="col-span-full lg:col-span-1 w-full flex justify-center px-8 sm:px-16 md:px-0 mt-32 lg:mx-0 lg:mt-20 h-fit">
             <div className="relative md:max-w-xl">
-              <Phone className="w-64" imgSrc="/testimonials/1.jpg" />
+              <Phone
+                className="w-64"
+                imgSrc="/testimonials/1.jpg"
+                wave={true}
+              />
             </div>
           </div>
         </MaxWidthWrapper>
@@ -177,7 +183,9 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
 
-        <div className="pt-16">{/* <Reviews /> */}</div>
+        <div className="pt-16">
+          <Reviews />
+        </div>
       </section>
     </div>
   );

@@ -7,9 +7,16 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   imgSrc: string;
   darkMode?: boolean;
+  wave?: boolean;
 }
 
-const Phone = ({ imgSrc, className, darkMode = false, ...props }: Props) => {
+const Phone = ({
+  imgSrc,
+  className,
+  darkMode = false,
+  wave = false,
+  ...props
+}: Props) => {
   const [transform, setTransform] = useState("rotateX(0deg) rotateY(0deg)");
 
   useEffect(() => {
@@ -20,7 +27,7 @@ const Phone = ({ imgSrc, className, darkMode = false, ...props }: Props) => {
       const mouseY = e.clientY;
 
       const rotateY = (mouseX / windowWidth - 0.5) * 20;
-      const rotateX = (mouseY / windowHeight - 0.5) * -20;
+      const rotateX = (mouseY / windowHeight - 0.5) * -10;
 
       setTransform(`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
     };
@@ -39,7 +46,7 @@ const Phone = ({ imgSrc, className, darkMode = false, ...props }: Props) => {
         className
       )}
       {...props}
-      style={{ transform }}
+      style={{ transform: wave ? transform : undefined }}
     >
       <img
         src={
