@@ -1,8 +1,8 @@
 import Avatar from "@/components/Avatar";
-import { Icons } from "@/components/icons/Icons";
-import MaxWidthWrapper from "@/components/wrapper/MaxWidthWrapper";
+import { Icons } from "@/components/common/icons/Icons";
+import MaxWidthWrapper from "@/components/common/wrapper/MaxWidthWrapper";
 import Phone from "@/components/Phone";
-import Stars from "@/components/icons/Stars";
+import Stars from "@/components/common/icons/Stars";
 import { formatNumber } from "@/utils/format/formatNumber";
 import Reviews from "@/components/Reviews/Reviews";
 import Link from "next/link";

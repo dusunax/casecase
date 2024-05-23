@@ -1,5 +1,5 @@
 "use client";
-import MaxWidthWrapper from "../wrapper/MaxWidthWrapper";
+import MaxWidthWrapper from "../common/wrapper/MaxWidthWrapper";
 import ReviewGrid from "./ReviewGrid";
 
 const Reviews = () => {
