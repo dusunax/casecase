@@ -41,10 +41,6 @@ export default function Home() {
         <MaxWidthWrapper className="pb-24 pt-10 lg:grid lg:grid-cols-3 sm:pb-32 lg:gap-x-0 xl:gap-x-8 lg:pt-24 xl:pt-32 lg:pb-52">
           <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
             <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
-              <div className="absolute w-28 left-0 -top-20 hidden lg:block">
-                <img src="image-1.png" className="w-full bg-red-500" />
-              </div>
-
               <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                 Your Image on a{" "}
                 <span className="bg-yellow-400 px-2 text-white">Custom</span>{" "}
@@ -121,10 +117,6 @@ export default function Home() {
               </span>{" "}
               say
             </h2>
-            <img
-              src="image-2.png"
-              className="w-24 order-0 lg:order-2 bg-red-500"
-            />
           </div>
 
           <div className="mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16">
@@ -215,12 +207,12 @@ export default function Home() {
 
               <div className="relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-gray-900/5 ring-inset ring-gray-900/10 lg:rounded-2xl">
                 <img
-                  src="/testimonials/1.jpg"
+                  src="/testimonials/4.jpg"
                   className="rounded-md object-cover bg-white shadow-2xl ring-1 ring-gray-900/10 h-full w-full"
                 />
               </div>
 
-              <Phone className="w-60 mx-auto" imgSrc="/testimonials/1.jpg" />
+              <Phone className="w-60 mx-auto" imgSrc="/testimonials/4.jpg" />
             </div>
           </div>
 
