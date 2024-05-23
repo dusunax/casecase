@@ -8,7 +8,7 @@
 - Trying to get familiar with good front-end libraries like framer-motion, Shadcn-ui, and react-dropzone.
 - Exploring fast and efficient SaaS tools like uploadthing, neon, and kinde. (for making toys)
 
-<img width="450" alt="image" src="https://github.com/dusunax/casecase/assets/94776135/aa55cd35-23ce-4599-9c63-3f1b68c5dbad">
+<img width="450" alt="image" src="https://github.com/dusunax/casecase/assets/94776135/6b42cec3-b5e4-46a5-8c5d-f148cdc79186">
 
 ## Following a Tutorial
 
