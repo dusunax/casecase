@@ -79,3 +79,10 @@ export const FINISHES = {
     },
   ],
 } as const;
+
+export interface DesignOptions {
+  color: (typeof COLORS)[number];
+  model: (typeof MODELS.options)[number];
+  material: (typeof MATERIALS.options)[number];
+  finish: (typeof FINISHES.options)[number];
+}
