@@ -2,7 +2,13 @@
 
 import { useRef, useState } from "react";
 import NextImage from "next/image";
-import { Field, Label, Radio, RadioGroup } from "@headlessui/react";
+import {
+  Description,
+  Field,
+  Label,
+  Radio,
+  RadioGroup,
+} from "@headlessui/react";
 import { Rnd } from "react-rnd";
 import { cn } from "@/lib/utils";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
@@ -18,9 +24,16 @@ import {
 import ColorRadioGroup from "@/components/Design/ColorRadioGroup";
 import {
   DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Check, ChevronsUpDown } from "lucide-react";
+import { formatPrice } from "@/utils/format/formatPrice";
+import { useCurrencyStore } from "@/store/useCurrencyStore";
+import CurrencySelector from "@/components/shared/CurrencySelector";
+import { BASE_PRICE } from "@/config/product";
 
 interface DesignConfiguratorProps {
   configId: string;
@@ -35,6 +48,7 @@ const DesignConfigurator = ({
 }: DesignConfiguratorProps) => {
   const phoneCaseRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  useCurrencyStore();
 
   const [options, setOptions] = useState<DesignOptions>({
     color: COLORS[0],
@@ -110,10 +124,15 @@ const DesignConfigurator = ({
             className="absolute z-10 inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white pointer-events-none"
           />
 
-          <div className="px-8 pb-12 pt-8">
-            <h2 className="tracking-tight font-bold text-3xl">
-              Customize your case
-            </h2>
+          <div className="px-8 pb-12 pt-6">
+            <div className="flex flex-wrap justify-between items-end gap-y-2">
+              <h2 className="tracking-tight font-bold text-3xl">
+                Customize <br className="hidden lg:block" /> your case
+              </h2>
+              <div className="flex-1 text-right">
+                <CurrencySelector />
+              </div>
+            </div>
 
             <div className="w-full h-px bg-zinc-200 my-6" />
 
@@ -123,10 +142,131 @@ const DesignConfigurator = ({
                   optionChange={optionChange}
                   options={options}
                 />
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className="w-full justify-between"
+                    >
+                      {options.model.label}
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    {MODELS.options.map((model) => (
+                      <DropdownMenuItem
+                        key={model.label}
+                        className={cn(
+                          "flex text-sm gap-1 items-center p-2 cursor-default hover:bg-zinc-100",
+                          {
+                            "bg-zinc-100": model.label === options.model.label,
+                          }
+                        )}
+                        onClick={() => {
+                          optionChange({ model });
+                        }}
+                      >
+                        <Check
+                          className={cn(
+                            "mr-2 h-4 w-4",
+                            model.label === options.model.label
+                              ? "opacity-100"
+                              : "opacity-0"
+                          )}
+                        />
+                        {model.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+
+                {[MATERIALS, FINISHES].map(
+                  ({ name, options: selectableOptions }) => (
+                    <RadioGroup
+                      key={name}
+                      value={options[name]}
+                      onChange={(val) => {
+                        optionChange({ [name]: val });
+                      }}
+                    >
+                      <Label>
+                        {name.slice(0, 1).toUpperCase() + name.slice(1)}
+                      </Label>
+                      <div className="mt-3 space-y-4">
+                        {selectableOptions.map((option) => (
+                          <Field>
+                            <Radio
+                              key={option.value}
+                              value={option}
+                              className={({ checked }) =>
+                                cn(
+                                  "relative block cursor-pointer rounded-lg bg-white px-6 py-4 shadow-sm border-2 border-zinc-200 focus:outline-none ring-0 focus:ring-0 outline-none sm:flex sm:justify-between",
+                                  {
+                                    "border-primary": checked,
+                                  }
+                                )
+                              }
+                            >
+                              <span className="flex items-center">
+                                <span className="flex flex-col text-sm">
+                                  <Label
+                                    className="font-medium text-gray-900"
+                                    as="span"
+                                  >
+                                    {option.label}
+                                  </Label>
+
+                                  {option.description ? (
+                                    <Description
+                                      as="span"
+                                      className="text-gray-500"
+                                    >
+                                      <span className="block sm:inline">
+                                        {option.description}
+                                      </span>
+                                    </Description>
+                                  ) : null}
+                                </span>
+                              </span>
+
+                              <Description
+                                as="span"
+                                className="mt-2 flex text-sm sm:ml-4 sm:mt-0 sm:flex-col sm:text-right"
+                              >
+                                <span className="font-medium text-gray-900">
+                                  {formatPrice(option.price / 100)}
+                                </span>
+                              </Description>
+                            </Radio>
+                          </Field>
+                        ))}
+                      </div>
+                    </RadioGroup>
+                  )
+                )}
               </div>
             </div>
           </div>
         </ScrollArea>
+
+        <div className="w-full px-8 h-16 bg-white">
+          <div className="h-px w-full bg-zinc-200" />
+          <div className="w-full h-full flex justify-end items-center">
+            <div className="w-full flex gap-6 items-center">
+              <p className="font-medium whitespace-nowrap">
+                {formatPrice(
+                  (BASE_PRICE + options.finish.price + options.material.price) /
+                    100
+                )}
+              </p>
+              <Button size="sm" className="w-full">
+                Continue
+                <ArrowRight className="h-4 w-4 ml-1.5 inline" />
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

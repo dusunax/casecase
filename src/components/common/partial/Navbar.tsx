@@ -3,6 +3,7 @@ import MaxWidthWrapper from "../wrapper/MaxWidthWrapper";
 import { buttonVariants } from "../../ui/button";
 import { ArrowRight } from "lucide-react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import CurrencySelector from "@/components/shared/CurrencySelector";
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession();
@@ -19,6 +20,7 @@ const Navbar = async () => {
           </Link>
 
           <div className="h-full flex items-center space-x-4">
+            <CurrencySelector />
             {user ? (
               <>
                 <Link

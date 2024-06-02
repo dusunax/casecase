@@ -22,12 +22,14 @@ const ColorRadioGroup = ({
           <Field key={color.label}>
             <Radio
               value={color}
-              className={`${cn(
-                "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent",
-                {
-                  [`border-${color.tw}`]: options.color === color,
-                }
-              )}`}
+              className={({ checked }) =>
+                `${cn(
+                  "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 active:ring-0 focus:ring-0 active:outline-none focus:outline-none border-2 border-transparent",
+                  {
+                    [`border-${color.tw}`]: checked,
+                  }
+                )}`
+              }
             >
               <span
                 className={cn(
