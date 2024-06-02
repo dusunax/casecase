@@ -39,8 +39,8 @@ const Steps = () => {
                 className={cn(
                   "absolute left-0 top-0 h-full w-1 bg-zinc-400 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full",
                   {
-                    "bg-zinc-700": isCurrent,
-                    "bg-primary": isCompleted,
+                    "bg-primary": isCurrent,
+                    "bg-zinc-700": isCompleted,
                   }
                 )}
                 aria-hidden="true"
@@ -56,10 +56,10 @@ const Steps = () => {
                   <img
                     src={imgPath}
                     className={cn(
-                      "flex h-20 w-20 object-contain items-center justify-center",
+                      "flex h-20 w-20 object-contain items-center justify-center opacity-40",
                       {
-                        "border-none": isCompleted,
-                        "border-zinc-700": isCurrent,
+                        "border-none opacity-100": isCompleted,
+                        "border-zinc-700 opacity-100": isCurrent,
                       }
                     )}
                   />
